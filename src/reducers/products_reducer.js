@@ -15,6 +15,19 @@ const products_reducer = (state, action) => {
   if (type === SIDEBAR_OPEN) return { ...state, isSidebarOpen: true };
   if (type === SIDEBAR_CLOSE) return { ...state, isSidebarOpen: false };
 
+  if (type === GET_PRODUCTS_BEGIN) return { ...state, productsLoading: true };
+  if (type === GET_PRODUCTS_SUCCESS)
+    return {
+      ...state,
+      products: action.payload,
+      featuredProducts: action.payload.filter(
+        (product) => product.featured === true
+      ),
+      productsLoading: false,
+    };
+  if (type === GET_PRODUCTS_ERROR)
+    return { ...state, productsError: true, productsLoading: false };
+
   throw new Error(`No Matching "${action.type}" - action type`);
 };
 
