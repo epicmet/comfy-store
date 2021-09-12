@@ -20,6 +20,7 @@ const filter_reducer = (state, action) => {
       filters: {
         ...state.filters,
         maxPrice: Math.max(...action.payload.map((p) => p.price)),
+        price: Math.max(...action.payload.map((p) => p.price)),
       },
     };
 
