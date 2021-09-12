@@ -58,7 +58,44 @@ const filter_reducer = (state, action) => {
       },
     };
 
-  if (type === FILTER_PRODUCTS) return { ...state };
+  if (type === FILTER_PRODUCTS) {
+    let newProducts = [...state.allProducts];
+
+    const { text, category, company, color, price, shipping } = state.filters;
+
+    if (text) {
+      newProducts = newProducts.filter((product) =>
+        product.name.toLowerCase().startsWith(text)
+      );
+    }
+
+    if (category !== "all") {
+      newProducts = newProducts.filter(
+        (product) => product.category === category
+      );
+    }
+
+    if (company !== "all") {
+      newProducts = newProducts.filter(
+        (product) => product.company === company
+      );
+    }
+
+    if (color !== "all") {
+      newProducts = newProducts.filter((product) =>
+        product.colors.find((c) => c === color)
+      );
+    }
+
+    // Price
+    newProducts = newProducts.filter((product) => product.price <= price);
+
+    if (shipping) {
+      newProducts = newProducts.filter((product) => product.shipping === true);
+    }
+
+    return { ...state, filteredProducts: newProducts };
+  }
 
   if (type === CLEAR_FILTERS)
     return {
