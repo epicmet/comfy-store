@@ -17,6 +17,10 @@ const filter_reducer = (state, action) => {
       ...state,
       allProducts: [...action.payload],
       filteredProducts: [...action.payload],
+      filters: {
+        ...state.filters,
+        maxPrice: Math.max(...action.payload.map((p) => p.price)),
+      },
     };
 
   if (type === SET_GRIDVIEW) return { ...state, gridView: true };
