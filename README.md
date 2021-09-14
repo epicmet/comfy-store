@@ -1,22 +1,7 @@
-## Notes
+# Comfy Store
 
-#### Older React Version
+comfy store is a e-commerce project followed by [John Smilga](https://www.udemy.com/course/react-tutorial-and-projects-course/).
 
-```
-"react": "^16.13.1",
-"react-dom": "^16.13.1",
-"react-scripts": "3.4.3",
-```
+![Comfy Store Screenshot](./.github/ComfyStore.png)
 
-#### Current React Version
-
-```
-"react": "^17.0.1",
-"react-dom": "^17.0.1",
-"react-scripts": "4.0.0",
-```
-
-#### Alternative fix
-
-.env file in the root
-FAST_REFRESH=FALSE
+checkout and see the result [here](https://mahdi-comfy-store.netlify.app/)
