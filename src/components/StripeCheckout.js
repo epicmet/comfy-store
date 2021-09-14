@@ -46,7 +46,17 @@ const CheckoutForm = () => {
     },
   };
 
-  const createPaymentIntent = async () => {};
+  const createPaymentIntent = async () => {
+    try {
+      const data = await axios.post(
+        "/.netlify/functions/create-payment-intent",
+        JSON.stringify({ cart, shippingFee, totalAmount })
+      );
+      console.log(data);
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
 
   const handleChange = async (event) => {};
   const handleSubmit = async (ev) => {};
